@@ -23,4 +23,12 @@ RANK() OVER (PARTITION BY e.departmentId ORDER BY e.salary DESC) AS rn
 SELECT Department, Employee, salary 
 FROM cte WHERE rn = 1;
 
-
+-- CTE selets information from two tables. Employee as e and Department as d.
+-- It retrieves the employee name, salary department name and use the rank() window function to assign a rank to each 
+         ---employee within their department based on their salary in descending order
+-- PARTITION BY e.departmentid, this clause of the RANK() function partitions the result set by the departmentId, 
+          ----meaning that the ranking is done seperately for each department.
+-- So ORDER BY e.salary DESC is ranking based on the salary in descending order.
+-- And the main query Select statement retirieves those columns from CTE, and Where clause filters the results to include only those 
+       ---rows where the rank rn is equal to 1.
+-- So, the final result of this query is a list of employees with highest salary in each department.
